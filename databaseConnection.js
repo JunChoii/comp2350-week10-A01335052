@@ -13,7 +13,7 @@ const dbConfigQoddi = {
 const dbConfigLocal = {
   host: "localhost",
   user: "root",
-  password: "jchoi2022@",
+  password: "jchoi2022",
   database: "week10",
   multipleStatements: false,
 };

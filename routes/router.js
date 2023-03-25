@@ -3,30 +3,30 @@ const router = require("express").Router();
 // const dbModel = include('databaseAccessLayer');
 //const dbModel = include('staticData');
 
-const userModel = include("models/web_user");
-const petModel = include("models/pet");
-const petTypeModel = include("models/pet_type");
+const userModel = require("../models/web_user");
+const petModel = require("../models/pet");
+const petTypeModel = require("../models/pet_type");
 
 const crypto = require("crypto");
 const { v4: uuid } = require("uuid");
 const passwordPepper = "SeCretPeppa4MySal+";
 
-router.get('/pets', async (req, res) => {
+router.get("/pets", async (req, res) => {
   console.log("page hit");
   try {
-      const pets = await petModel.findAll({attributes: ['pet_id', 'name']}); //{where: {web_user_id: 1}}
-          if (pets === null) {
-              res.render('error', {message: 'Error connecting to MySQL'});
-              console.log("Error connecting to userModel");
-          } else {
-              console.log(pets);
-              res.render('pets', {allPets: pets});
-          }
-  }  catch(ex) {
-      res.render('error', {message: 'Error connecting to MySQL'});
-      console.log("Error connecting to MySQL");
-      console.log(ex);
-  } 
+    const pets = await petModel.findAll({ attributes: ["pet_id", "name"] }); //{where: {web_user_id: 1}}
+    if (pets === null) {
+      res.render("error", { message: "Error connecting to MySQL" });
+      console.log("Error connecting to userModel");
+    } else {
+      console.log(pets);
+      res.render("pets", { allPets: pets });
+    }
+  } catch (ex) {
+    res.render("error", { message: "Error connecting to MySQL" });
+    console.log("Error connecting to MySQL");
+    console.log(ex);
+  }
 });
 
 router.get("/", async (req, res) => {
@@ -36,7 +36,7 @@ router.get("/", async (req, res) => {
       attributes: ["web_user_id", "first_name", "last_name", "email"],
     }); //{where: {web_user_id:1}}
     if (users === null) {
-      res.render("error", { message: "Error connecting toMySQL" });
+      res.render("error", { message: "Error connecting to MySQL" });
       console.log("Error connecting to userModel");
     } else {
       console.log(users);
