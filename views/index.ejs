@@ -20,10 +20,10 @@
             <table class="table is-bordered is-hoverable is-striped is-narrow">
               <thead>
                 <tr>
-                  <th>#</th>
                   <th>Firstname</th>
-                  <th>Lastname</th> 
+                  <th>Lastname</th>
                   <th>Email</th>
+                  <th>&nbsp;</th>
                   <th>&nbsp;</th>
                 </tr>
               </thead>
@@ -38,11 +38,17 @@
                       <i class="fas fa-user-times"></i> </span
                   ></a>
                 </td>
+                <td>
+                  <a href="/showPets?id=<%= allUsers[i].web_user_id %>">
+                    <span class="icon is-small">
+                      <i class="fas fa-paw"></i> </span
+                  ></a>
+                </td>
               </tr>
               <% } %>
               <tfoot>
                 <tr>
-                  <td colspan="4">There are <%= i %> users.</td>
+                  <td colspan="5">There are <%= i %> users.</td>
                 </tr>
               </tfoot>
             </table>
